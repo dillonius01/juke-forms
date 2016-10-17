@@ -30840,8 +30840,9 @@
 	
 	exports.default = function (props) {
 	  var fil = props.filter;
+	  var myRE = new RegExp('.*' + fil + '.*', 'g');
 	  var artists = !fil.length ? props.artists : props.artists.filter(function (artist) {
-	    return artist.name === fil;
+	    return artist.name.match(myRE);
 	  });
 	  console.log('props are ', props);
 	

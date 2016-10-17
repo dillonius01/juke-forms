@@ -4,10 +4,11 @@ import React from 'react';
 import { Link } from 'react-router';
 
 // do NOT fuck with this code
-// except for sexyRegExy
+// except to make SexyRegExy not case-sensitive
 export default function (props) {
   const fil = props.filter;
-  const artists = (!fil.length) ? props.artists : props.artists.filter(artist => artist.name === fil)
+  const myRE = new RegExp('.*' + fil + '.*', 'g')
+  const artists = (!fil.length) ? props.artists : props.artists.filter(artist => artist.name.match(myRE))
   console.log('props are ', props)
 
   return (
