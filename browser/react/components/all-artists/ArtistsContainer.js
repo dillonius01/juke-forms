@@ -1,7 +1,7 @@
 'use strict';
 
 import { connect } from 'react-redux';
-import Artists from './Artists';
+import ArtistsDecorator from './ArtistsDecorator';
 
 const mapStateToProps = function (state) {
   return {
@@ -10,5 +10,5 @@ const mapStateToProps = function (state) {
 };
 
 const statefulComponentCreator = connect(mapStateToProps);
-const ArtistsContainer = statefulComponentCreator(Artists);
+const ArtistsContainer = statefulComponentCreator(ArtistsDecorator);
 export default ArtistsContainer;
