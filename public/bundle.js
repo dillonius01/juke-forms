@@ -30743,7 +30743,7 @@
 	
 	var _reactRedux = __webpack_require__(172);
 	
-	var _ArtistsDecorator = __webpack_require__(298);
+	var _ArtistsDecorator = __webpack_require__(290);
 	
 	var _ArtistsDecorator2 = _interopRequireDefault(_ArtistsDecorator);
 	
@@ -30766,12 +30766,85 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Artists = __webpack_require__(291);
+	
+	var _Artists2 = _interopRequireDefault(_Artists);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ArtistsDecorator = function ArtistsDecorator(InnerComponent) {
+		return function (_React$Component) {
+			_inherits(StatefulArtists, _React$Component);
+	
+			function StatefulArtists(props) {
+				_classCallCheck(this, StatefulArtists);
+	
+				var _this = _possibleConstructorReturn(this, (StatefulArtists.__proto__ || Object.getPrototypeOf(StatefulArtists)).call(this, props));
+	
+				_this.state = {
+					filter: '',
+					artists: _this.props.artists
+				};
+				_this.handleType = _this.handleType.bind(_this);
+				return _this;
+			}
+	
+			_createClass(StatefulArtists, [{
+				key: 'handleType',
+				value: function handleType(evt) {
+					this.setState({
+						filter: evt.target.value
+					});
+				}
+			}, {
+				key: 'render',
+				value: function render() {
+					return _react2.default.createElement(InnerComponent, {
+						handleType: this.handleType,
+						filter: this.state.filter,
+						artists: this.props.artists
+					});
+				}
+			}]);
+	
+			return StatefulArtists;
+		}(_react2.default.Component);
+	};
+	
+	exports.default = ArtistsDecorator(_Artists2.default);
+
+/***/ },
+/* 291 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
 	exports.default = function (props) {
-	  var artists = props.artists;
+	  var fil = props.filter;
+	  var artists = !fil.length ? props.artists : props.artists.filter(function (artist) {
+	    return artist.name === fil;
+	  });
 	  console.log('props are ', props);
+	
 	  return _react2.default.createElement(
 	    'div',
 	    null,
@@ -30787,7 +30860,7 @@
 	      _react2.default.createElement(
 	        'label',
 	        { htmlFor: 'post' },
-	        props.filter
+	        fil
 	      )
 	    ),
 	    _react2.default.createElement(
@@ -30817,7 +30890,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 291 */,
 /* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -31007,77 +31079,6 @@
 	var _SongsContainer2 = _interopRequireDefault(_SongsContainer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ },
-/* 296 */,
-/* 297 */,
-/* 298 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Artists = __webpack_require__(290);
-	
-	var _Artists2 = _interopRequireDefault(_Artists);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var ArtistsDecorator = function ArtistsDecorator(InnerComponent) {
-		return function (_React$Component) {
-			_inherits(StatefulArtists, _React$Component);
-	
-			function StatefulArtists(props) {
-				_classCallCheck(this, StatefulArtists);
-	
-				var _this = _possibleConstructorReturn(this, (StatefulArtists.__proto__ || Object.getPrototypeOf(StatefulArtists)).call(this, props));
-	
-				_this.state = {
-					filter: '',
-					artists: _this.props.artists
-				};
-				_this.handleType = _this.handleType.bind(_this);
-				return _this;
-			}
-	
-			_createClass(StatefulArtists, [{
-				key: 'handleType',
-				value: function handleType(evt) {
-					this.setState({
-						filter: evt.target.value
-					});
-				}
-			}, {
-				key: 'render',
-				value: function render() {
-					return _react2.default.createElement(InnerComponent, {
-						handleType: this.handleType,
-						filter: this.state.filter,
-						artists: this.props.artists
-					});
-				}
-			}]);
-	
-			return StatefulArtists;
-		}(_react2.default.Component);
-	};
-	
-	exports.default = ArtistsDecorator(_Artists2.default);
 
 /***/ }
 /******/ ]);

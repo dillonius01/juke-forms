@@ -3,19 +3,22 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-
+// do NOT fuck with this code
+// except for sexyRegExy
 export default function (props) {
-  const artists = props.artists;
+  const fil = props.filter;
+  const artists = (!fil.length) ? props.artists : props.artists.filter(artist => artist.name === fil)
   console.log('props are ', props)
+
   return (
     <div>
       <h3>Artists</h3>
       <form className="form-group">
         <input className="form-control" name="post" type="text" onChange={ props.handleType } />
-        <label htmlFor="post">{ props.filter }</label>
+        <label htmlFor="post">{ fil }</label>
       </form>
       <div className="list-group">
-        {
+        { 
           artists && artists
           .map(artist => (
             <div className="list-group-item" key={ artist.id }>
@@ -30,4 +33,3 @@ export default function (props) {
   );
 }
 
-// put ternary on line 19?
